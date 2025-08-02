@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://trueviewsewer.com/sitemap-index.xml

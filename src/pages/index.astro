@@ -1,0 +1,224 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import CallToAction from '../components/CallToAction.astro';
+
+const posts = await getCollection('blog');
+const sortedPosts = posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+function formatDate(date: Date) {
+  return date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  });
+}
+---
+
+<Layout 
+  title="Blog" 
+  description="Expert insights on sewer inspections, Utah County real estate, and home buying tips from TrueView Sewer's professional team."
+  canonicalURL="https://trueviewsewer.com"
+>
+  <Header />
+  
+  <main class="py-20">
+    <!-- Hero Section with Background -->
+    <div class="relative bg-cover bg-center py-32" style="background-image: url('https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&dpr=1');">
+      <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+      <div class="relative container mx-auto px-4 text-center">
+        <div class="mb-4">
+          <a href="https://trueviewsewer.com/" class="text-blue-accent hover:text-blue-accent/80 transition-colors">
+            ← Back to Home
+          </a>
+        </div>
+        <h1 class="text-4xl md:text-6xl font-bold text-white mb-6">
+          Sewer Scope Blog
+        </h1>
+        <p class="text-xl text-white max-w-4xl mx-auto leading-relaxed">
+          Expert insights on sewer inspections, homebuying tips, and industry knowledge from Utah County's independent sewer scope specialists.
+        </p>
+      </div>
+    </div>
+    
+    <div class="container mx-auto px-4 max-w-6xl py-16">
+      <!-- Featured Article Section -->
+      <div class="text-center mb-12">
+        <p class="text-blue-accent text-lg mb-8">Featured Article</p>
+      </div>
+      
+      <!-- Blog Posts Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+        {sortedPosts.map((post) => (
+          <article class="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-all duration-300 flex flex-col">
+            {post.data.heroImage && (
+              <div class="aspect-video overflow-hidden">
+                <img 
+                  src={post.data.heroImage} 
+                  alt={post.data.title}
+                  class="w-full h-full object-cover"
+                />
+              </div>
+            )}
+            
+            <div class="p-6 flex flex-col justify-between flex-1">
+              <div>
+                <div class="flex items-center text-sm text-muted-foreground mb-3">
+                  <time datetime={post.data.pubDate.toISOString()}>
+                    {formatDate(post.data.pubDate)}
+                  </time>
+                  <span class="mx-2">•</span>
+                  <span>{post.data.readTime}</span>
+                </div>
+                
+                <h2 class="text-xl font-bold text-neutral-dark mb-3 leading-tight">
+                  <a href={`/${post.slug}`} class="hover:text-blue-accent transition-colors">
+                    {post.data.title}
+                  </a>
+                </h2>
+                
+                <p class="text-slate-foreground mb-4 leading-relaxed">
+                  {post.data.description}
+                </p>
+              </div>
+              
+              <a 
+                href={`/${post.slug}`}
+                class="inline-block w-full text-center border border-blue-accent text-blue-accent px-4 py-2 rounded hover:bg-blue-accent hover:text-white transition-colors"
+              >
+                Read More
+              </a>
+            </div>
+          </article>
+        ))}
+        
+        <!-- Coming Soon Articles -->
+        <article class="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-all duration-300 opacity-75 flex flex-col">
+          <div class="aspect-video overflow-hidden">
+            <img 
+              src="https://images.pexels.com/photos/834892/pexels-photo-834892.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" 
+              alt="Common Sewer Problems in Utah County Homes"
+              class="w-full h-full object-cover"
+            />
+          </div>
+          
+          <div class="p-6 flex flex-col justify-between flex-1">
+            <div>
+              <div class="flex items-center text-sm text-muted-foreground mb-3">
+                <time datetime="2025-08-04T00:00:00.000Z">
+                  August 4, 2025
+                </time>
+                <span class="mx-2">•</span>
+                <span>8 min read</span>
+              </div>
+              
+              <h2 class="text-xl font-bold text-neutral-dark mb-3 leading-tight">
+                Common Sewer Problems in Utah County Homes: What Every Buyer Should Know
+              </h2>
+              
+              <p class="text-slate-foreground mb-4 leading-relaxed">
+                Discover the most frequent sewer issues found in Utah County properties and how to identify warning signs before you buy.
+              </p>
+            </div>
+            
+            <div class="inline-block w-full text-center border border-gray-400 text-gray-500 px-4 py-2 rounded cursor-not-allowed">
+              Coming Soon
+            </div>
+          </div>
+        </article>
+        
+        <article class="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-all duration-300 opacity-75 flex flex-col">
+          <div class="aspect-video overflow-hidden">
+            <img 
+              src="https://images.pexels.com/photos/1216589/pexels-photo-1216589.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" 
+              alt="The Complete Guide to Sewer Line Materials"
+              class="w-full h-full object-cover"
+            />
+          </div>
+          
+          <div class="p-6 flex flex-col justify-between flex-1">
+            <div>
+              <div class="flex items-center text-sm text-muted-foreground mb-3">
+                <time datetime="2025-08-11T00:00:00.000Z">
+                  August 11, 2025
+                </time>
+                <span class="mx-2">•</span>
+                <span>6 min read</span>
+              </div>
+              
+              <h2 class="text-xl font-bold text-neutral-dark mb-3 leading-tight">
+                The Complete Guide to Sewer Line Materials: Clay, PVC, Cast Iron, and More
+              </h2>
+              
+              <p class="text-slate-foreground mb-4 leading-relaxed">
+                Learn about different sewer line materials, their lifespans, and what to expect when buying a home with each type.
+              </p>
+            </div>
+            
+            <div class="inline-block w-full text-center border border-gray-400 text-gray-500 px-4 py-2 rounded cursor-not-allowed">
+              Coming Soon
+            </div>
+          </div>
+        </article>
+        
+        <article class="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-all duration-300 opacity-75 flex flex-col">
+          <div class="aspect-video overflow-hidden">
+            <img 
+              src="https://images.pexels.com/photos/209251/pexels-photo-209251.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" 
+              alt="Seasonal Sewer Maintenance Tips for Utah Homeowners"
+              class="w-full h-full object-cover"
+            />
+          </div>
+          
+          <div class="p-6 flex flex-col justify-between flex-1">
+            <div>
+              <div class="flex items-center text-sm text-muted-foreground mb-3">
+                <time datetime="2025-08-18T00:00:00.000Z">
+                  August 18, 2025
+                </time>
+                <span class="mx-2">•</span>
+                <span>5 min read</span>
+              </div>
+              
+              <h2 class="text-xl font-bold text-neutral-dark mb-3 leading-tight">
+                Seasonal Sewer Maintenance Tips for Utah Homeowners
+              </h2>
+              
+              <p class="text-slate-foreground mb-4 leading-relaxed">
+                Protect your investment with seasonal maintenance tips specifically designed for Utah's unique climate and soil conditions.
+              </p>
+            </div>
+            
+            <div class="inline-block w-full text-center border border-gray-400 text-gray-500 px-4 py-2 rounded cursor-not-allowed">
+              Coming Soon
+            </div>
+          </div>
+        </article>
+      </div>
+      
+      <!-- More Articles Section -->
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-neutral-dark mb-4">More Helpful Articles</h2>
+        <p class="text-slate-foreground">Additional insights and tips for homebuyers and real estate professionals</p>
+      </div>
+      
+      <!-- Call to Action Section -->
+      <div class="bg-blue-accent py-16 rounded-lg text-center">
+        <h2 class="text-3xl font-bold text-neutral-dark mb-4">Ready for Your Sewer Scope Inspection?</h2>
+        <p class="text-neutral-dark mb-8 max-w-2xl mx-auto">
+          Get the facts, not a sales pitch. Schedule your independent sewer inspection today.
+        </p>
+        <a 
+          href="https://trueviewsewer.com/#booking" 
+          class="bg-neutral-dark text-white px-8 py-3 rounded font-semibold hover:bg-neutral-dark/90 transition-colors"
+        >
+          Schedule Your Inspection
+        </a>
+      </div>
+    </div>
+  </main>
+  
+  <Footer />
+</Layout>

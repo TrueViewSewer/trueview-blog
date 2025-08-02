@@ -1,0 +1,61 @@
+---
+import '../styles/global.css';
+
+export interface Props {
+  title: string;
+  description?: string;
+  canonicalURL?: string;
+  image?: string;
+}
+
+const { title, description, canonicalURL, image } = Astro.props;
+const siteTitle = `${title} | TrueView Sewer`;
+const siteDescription = description || "Professional sewer scope inspections in Utah County. Protect your home investment with expert sewer line inspections.";
+const siteImage = image || "https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg?auto=compress&cs=tinysrgb&w=1200&h=630&dpr=1";
+const canonical = canonicalURL || `https://trueviewsewer.com${Astro.url.pathname}`;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={siteDescription} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    
+    <!-- SEO Meta Tags -->
+    <title>{siteTitle}</title>
+    <meta name="description" content={siteDescription} />
+    <link rel="canonical" href={canonical} />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:title" content={siteTitle} />
+    <meta property="og:description" content={siteDescription} />
+    <meta property="og:image" content={siteImage} />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonical} />
+    <meta property="twitter:title" content={siteTitle} />
+    <meta property="twitter:description" content={siteDescription} />
+    <meta property="twitter:image" content={siteImage} />
+    
+    <!-- JSON-LD Schema -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "True View Inspections",
+      "url": "https://trueviewsewer.com",
+      "telephone": "(208) 483-0880",
+      "email": "info@trueviewsewer.com",
+      "areaServed": "Utah County",
+      "serviceType": "Sewer Scope Inspection"
+    })}></script>
+  </head>
+  <body class="bg-slate text-foreground">
+    <slot />
+  </body>
+</html>
