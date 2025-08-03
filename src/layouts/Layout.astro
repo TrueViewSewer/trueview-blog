@@ -9,8 +9,8 @@ export interface Props {
 }
 
 const { title, description, canonicalURL, image } = Astro.props;
-const siteTitle = `${title} | TrueView Sewer`;
-const siteDescription = description || "Professional sewer scope inspections in Utah County. Protect your home investment with expert sewer line inspections.";
+const siteTitle = `${title} | True View Inspections`;
+const siteDescription = description || "Professional sewer scope inspections in Utah. Protect your home investment with expert, unbiased inspections.";
 const siteImage = image || "https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg?auto=compress&cs=tinysrgb&w=1200&h=630&dpr=1";
 const canonical = canonicalURL || `https://trueviewsewer.com${Astro.url.pathname}`;
 ---
@@ -51,11 +51,20 @@ const canonical = canonicalURL || `https://trueviewsewer.com${Astro.url.pathname
       "url": "https://trueviewsewer.com",
       "telephone": "(208) 483-0880",
       "email": "info@trueviewsewer.com",
-      "areaServed": "Utah County",
+      "areaServed": [
+        "Utah County",
+        "Salt Lake County",
+        "Davis County",
+        "Summit County",
+        "Wasatch County",
+        "Tooele County"
+      ],
       "serviceType": "Sewer Scope Inspection"
     })}></script>
   </head>
   <body class="bg-slate text-foreground">
-    <slot />
+    <div class="blog-content">
+      <slot />
+    </div>
   </body>
 </html>
