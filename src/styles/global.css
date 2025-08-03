@@ -3,42 +3,156 @@
 @tailwind utilities;
 
 /* Blog Content Styling */
+.blog-content {
+  @apply text-gray-800 leading-relaxed;
+}
+
 .blog-content h1 {
-  @apply text-3xl font-bold mb-6 mt-8 first:mt-0;
+  @apply text-4xl font-bold mb-8 mt-12 first:mt-0 text-neutral-dark border-b-2 border-blue-accent pb-4;
 }
 
 .blog-content h2 {
-  @apply text-2xl font-semibold mb-4 mt-8;
+  @apply text-3xl font-bold mb-6 mt-12 text-neutral-dark relative;
+}
+
+.blog-content h2:before {
+  content: '';
+  @apply absolute -left-6 top-0 w-1 h-full bg-blue-accent rounded;
 }
 
 .blog-content h3 {
-  @apply text-xl font-medium mb-3 mt-6;
+  @apply text-2xl font-semibold mb-4 mt-8 text-neutral-dark;
+}
+
+.blog-content h4 {
+  @apply text-xl font-semibold mb-3 mt-6 text-neutral-dark;
 }
 
 .blog-content p {
-  @apply text-base leading-7 mb-6;
+  @apply text-lg leading-8 mb-6 text-gray-700;
 }
 
 .blog-content ul, .blog-content ol {
-  @apply space-y-3 mb-6 ml-6;
+  @apply space-y-3 mb-8 ml-6;
 }
 
 .blog-content li {
-  @apply leading-7;
+  @apply leading-8 text-lg text-gray-700 relative;
+}
+
+.blog-content ul li:before {
+  content: '→';
+  @apply absolute -left-6 text-blue-accent font-bold;
 }
 
 .blog-content blockquote {
-  @apply border-l-4 border-blue-accent pl-6 italic text-slate-foreground mb-6 py-2;
+  @apply border-l-4 border-blue-accent bg-blue-50 pl-6 pr-6 py-4 italic text-gray-700 mb-8 rounded-r-lg;
 }
 
 .blog-content strong {
-  @apply font-semibold text-neutral-dark;
+  @apply font-bold text-neutral-dark bg-yellow-100 px-1 rounded;
+}
+
+/* Link Styling - This is the key fix! */
+.blog-content a {
+  @apply text-blue-600 font-semibold underline decoration-2 underline-offset-2 hover:text-blue-800 hover:bg-blue-50 px-1 py-0.5 rounded transition-all duration-200;
+}
+
+.blog-content a:hover {
+  @apply shadow-sm;
 }
 
 .blog-content code {
-  @apply bg-slate px-2 py-1 rounded text-sm;
+  @apply bg-gray-100 text-gray-800 px-3 py-1 rounded-md text-base font-mono border;
 }
 
 .blog-content pre {
-  @apply bg-slate p-4 rounded-md overflow-x-auto mb-6;
+  @apply bg-gray-900 text-green-400 p-6 rounded-lg overflow-x-auto mb-8 border;
+}
+
+/* Callout Boxes */
+.blog-content .callout {
+  @apply bg-gradient-to-r from-blue-50 to-blue-100 border-l-4 border-blue-500 p-6 mb-8 rounded-r-lg shadow-sm;
+}
+
+.blog-content .callout-warning {
+  @apply bg-gradient-to-r from-yellow-50 to-yellow-100 border-l-4 border-yellow-500 p-6 mb-8 rounded-r-lg shadow-sm;
+}
+
+.blog-content .callout-success {
+  @apply bg-gradient-to-r from-green-50 to-green-100 border-l-4 border-green-500 p-6 mb-8 rounded-r-lg shadow-sm;
+}
+
+.blog-content .callout-danger {
+  @apply bg-gradient-to-r from-red-50 to-red-100 border-l-4 border-red-500 p-6 mb-8 rounded-r-lg shadow-sm;
+}
+
+/* Cost Boxes */
+.blog-content .cost-box {
+  @apply bg-gradient-to-br from-gray-50 to-gray-100 border-2 border-gray-300 p-6 rounded-xl mb-8 shadow-lg;
+}
+
+.blog-content .cost-box h4 {
+  @apply text-xl font-bold text-gray-800 mb-3 flex items-center;
+}
+
+.blog-content .cost-box h4:before {
+  content: '💰';
+  @apply mr-2;
+}
+
+/* Service Areas Styling */
+.blog-content .service-areas {
+  @apply bg-gradient-to-r from-blue-600 to-blue-700 text-white p-8 rounded-xl mb-8 shadow-lg;
+}
+
+.blog-content .service-areas h3 {
+  @apply text-white text-2xl font-bold mb-4;
+}
+
+.blog-content .service-areas ul {
+  @apply grid grid-cols-2 gap-2;
+}
+
+.blog-content .service-areas li {
+  @apply text-blue-100;
+}
+
+.blog-content .service-areas li:before {
+  content: '📍';
+  @apply text-white;
+}
+
+/* CTA Boxes */
+.blog-content .cta-box {
+  @apply bg-gradient-to-r from-blue-accent to-blue-500 text-white p-8 rounded-xl text-center mb-8 shadow-xl;
+}
+
+.blog-content .cta-box h3 {
+  @apply text-white text-2xl font-bold mb-4;
+}
+
+.blog-content .cta-box p {
+  @apply text-blue-100 text-lg mb-6;
+}
+
+.blog-content .cta-box a {
+  @apply bg-white text-blue-600 font-bold px-8 py-4 rounded-lg hover:bg-gray-100 no-underline shadow-lg transition-all duration-200 inline-block;
+}
+
+/* Stats Boxes */
+.blog-content .stats-grid {
+  @apply grid grid-cols-1 md:grid-cols-2 gap-6 mb-8;
+}
+
+.blog-content .stat-box {
+  @apply bg-white border-2 border-gray-200 p-6 rounded-xl text-center shadow-md hover:shadow-lg transition-shadow;
+}
+
+.blog-content .stat-box .stat-number {
+  @apply text-3xl font-bold text-blue-600 mb-2;
+}
+
+.blog-content .stat-box .stat-label {
+  @apply text-gray-600 font-medium;
 }
