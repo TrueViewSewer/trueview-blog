@@ -3,7 +3,7 @@ import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://trueviewsewer.com',
+  site: 'https://your-actual-blog-url.vercel.app', // Update this to your real URL
   integrations: [
     tailwind(),
     sitemap({
