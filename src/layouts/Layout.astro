@@ -12,7 +12,7 @@ const { title, description, canonicalURL, image } = Astro.props;
 const siteTitle = `${title} | TrueView Sewer`;
 const siteDescription = description || "Professional sewer scope inspections in Utah County. Protect your home investment with expert sewer line inspections.";
 const siteImage = image || "https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg?auto=compress&cs=tinysrgb&w=1200&h=630&dpr=1";
-const canonical = canonicalURL || `https://trueviewsewer.com${Astro.url.pathname}`;
+const canonical = canonicalURL || `https://blog.trueviewsewer.com${Astro.url.pathname}`;
 ---
 
 <!DOCTYPE html>
@@ -48,10 +48,10 @@ const canonical = canonicalURL || `https://trueviewsewer.com${Astro.url.pathname
       "@context": "https://schema.org",
       "@type": "Organization",
       "name": "True View Inspections",
-      "url": "https://trueviewsewer.com",
+      "url": "https://blog.trueviewsewer.com",
       "telephone": "(208) 483-0880",
       "email": "info@trueviewsewer.com",
-      "areaServed": "All of the Wasatch Front",
+      "areaServed": "Utah County",
       "serviceType": "Sewer Scope Inspection"
     })}></script>
   </head>
