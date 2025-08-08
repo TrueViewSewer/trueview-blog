@@ -5,8 +5,8 @@ export async function GET(context) {
   const posts = await getCollection('blog');
   return rss({
     title: 'True View Inspections Blog',
-    description: 'Expert insights on sewer inspections, Utah County real estate, and home buying tips.',
-    site: context.site,
+    description: 'Expert insights on sewer inspections, Utah real estate, and home buying tips.',
+    site: 'https://blog.trueviewsewer.com',
     items: posts.map((post) => ({
       title: post.data.title,
       pubDate: post.data.pubDate,
