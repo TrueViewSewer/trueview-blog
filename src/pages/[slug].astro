@@ -32,7 +32,7 @@ function formatDate(date: Date) {
   });
 }
 
-const canonicalURL = `https://trueviewsewer.com/${post.slug}`;
+const canonicalURL = `https://blog.trueviewsewer.com/${post.slug}`;
 const breadcrumbItems = [
   { label: 'Home', href: 'https://trueviewsewer.com/' },
   { label: 'Blog', href: '/blog/' },
@@ -60,7 +60,7 @@ const breadcrumbItems = [
     "publisher": {
       "@type": "Organization",
       "name": "True View Inspections",
-      "url": "https://trueviewsewer.com"
+      "url": "https://blog.trueviewsewer.com"
     },
     "datePublished": post.data.pubDate.toISOString(),
     "dateModified": post.data.updatedDate?.toISOString() || post.data.pubDate.toISOString(),
