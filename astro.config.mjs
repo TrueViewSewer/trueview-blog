@@ -6,7 +6,9 @@ export default defineConfig({
   site: 'https://blog.trueviewsewer.com',
   integrations: [
     tailwind(),
-    sitemap()
+    sitemap({
+      filter: (page) => !page.includes('/admin/'),
+    })
   ],
   output: 'static'
 });
