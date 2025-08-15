@@ -1,0 +1,37 @@
+<!-- True View Inspections logo -->
+<svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title>True View Inspections</title>
+  <desc>Magnifying glass with simple house outline</desc>
+  <style>
+    :root { --brand:#67B7E1; } /* exact blue */
+  </style>
+
+  <!-- Ring: thin, even stroke -->
+  <circle cx="256" cy="256" r="170"
+          fill="none"
+          stroke="var(--brand)"
+          stroke-width="18"
+          stroke-linecap="round"
+          stroke-linejoin="round" />
+
+  <!-- Handle: slim rounded capsule at ~38°, tangent to ring -->
+  <!-- Tangency point near 45° on the ring -->
+  <g transform="translate(376,376) rotate(38)">
+    <!-- length 150, height 34, fully rounded ends -->
+    <rect x="0" y="-17" width="150" height="34" rx="17" ry="17"
+          fill="var(--brand)"/>
+  </g>
+
+  <!-- House: simple outline, more white space, thinner than ring -->
+  <path d="M256 204
+           L206 246
+           V304
+           H306
+           V246
+           L256 204 Z"
+        fill="none"
+        stroke="var(--brand)"
+        stroke-width="12"
+        stroke-linecap="round"
+        stroke-linejoin="round"/>
+</svg>
